@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="clock">
+        <div class="hour">
+            <div class="hr" id="hr"></div>
+        </div>
+        <div class="min">
+            <div class="mn" id="mn"></div>
+        </div>
+        <div class="sec">
+            <div class="sc" id="sc"></div>
+        </div>
+
+        <div class="times">
+            <div class="time"></div>
+            <div class="time"></div>
+            <div class="time"></div>
+            <div class="time"></div>
+            <div class="time"></div>
+            <div class="time"></div>
+            <div class="time"></div>
+            <div class="time"></div>
+            <div class="time"></div>
+            <div class="time"></div>
+            <div class="time"></div>
+            <div class="time"></div>
+        </div>
+       
+    </div>
+
+    <script text="text/javascript">
+        const deg =6;
+        const hr = document.getElementById("hr")
+        const mn = document.getElementById("mn")
+        const sc = document.getElementById("sc")
+
+        const timesdiv = document.getElementsByClassName("time")
+        // const degrees= 0 
+        
+        // timesdiv.forEach(element => {
+        //     element.style.transform=`rotate(${degrees}deg)`;
+        //     degrees+=30;
+        // });
+        
+        for (var i = 0 ; i < timesdiv.length ; i++){
+            degrees = i*30
+            timesdiv[i].style.transform=`rotate(${degrees}deg)`;
+        }
+        
+
+
+        setInterval(()=>{
+            date = new Date();
+            hh = date.getHours();
+            mm = date.getMinutes();
+            ss = date.getSeconds();
+            
+            console.log(`${hh} : ${mm} : ${ss}`)
+            
+            hr.style.transform = `rotate(${ 180 + hh*30 + (mm/12)}deg)`;
+            mn.style.transform = `rotate(${ 180 + mm*6}deg)`;
+            sc.style.transform = `rotate(${ 180 + ss}deg)`;
+
+        } ,1000)
+    </script>
+</body>
+</html>
+
+
